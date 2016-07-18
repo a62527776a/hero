@@ -1,0 +1,44 @@
+<script>
+	function Hero(hp,mp,level,damage,defense){
+		this.hp = hp;
+		this.mp = mp;
+		this.level = level;
+		this.damage = damage;//攻击力
+		this.defense = defense;//防御力
+	}
+	function goods(){
+		
+	}
+	Hero.prototype = {
+		constructor : Hero,
+		weapons : '',
+		armor : '',
+		upLevel : function(){
+			this.hp += 15;
+			this.mp += 30;
+			this.damage += 15;
+			this.defense += 5;
+			this.level += 1;
+		},
+		attack : function(obj){
+			obj.hp -= this.damage - obj.defense;
+		},//攻击
+		dead : function(){
+			alert('you are dead');
+		},
+		equipment : function(obj){
+			if(obj.type == 'weapons'){}
+				this.hp += obj.hp;
+				this.mp += obj.mp;
+		},
+		pickUp : function(obj){
+			this.items.push(obj);
+		},
+		items : []
+	}
+	var chenyu = new Hero(200,50,1,1,1);
+	var asd = new Hero(300,25,1,200,1);
+	asd.attack(chenyu);
+	chenyu.pickUp('霜之哀伤');
+	alert(chenyu.items);
+</script>
